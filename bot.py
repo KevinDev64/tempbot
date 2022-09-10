@@ -57,13 +57,15 @@ def show_temp(m, res=False):
     seconds = time.second
     
     bot.send_message(m.chat.id, "Сегодня \- *_" + str(day) + " " + months[month_raw] + " " + str(year) + " года_*", parse_mode="MarkdownV2")
-    bot.send_message(m.chat.id, "Температура CPU \- *" + str(get_temp()) + " С°*", parse_mode="MarkdownV2")
+    bot.send_message(m.chat.id, "Время \- *_" + str(hour) + "\:" + str(minutes) + "\:" + str(seconds) + "_*", parse_mode="MarkdownV2")
+    bot.send_message(m.chat.id, "Температура *CPU* \- *" + str(get_temp()) + " С°*", parse_mode="MarkdownV2")
     
 
 @bot.message_handler(commands=["shutdown", "off"])
 
 def shutdown(m, res=False):
     bot.send_message(m.chat.id, "*Экстренное выключение \.\.\.*", parse_mode="MarkdownV2")
+    os.system("shutdown now")
 
     
 @bot.message_handler(commands=["reboot", "restart"])
@@ -71,5 +73,6 @@ def shutdown(m, res=False):
 def reboot(m, res=False):
     bot.send_message(m.chat.id, "*Перезагрузка сервера \.\.\.*", parse_mode="MarkdownV2")
     bot.send_message(m.chat.id, "*Внимание\! Для последующего управления потребуется\n_РУЧНОЙ ВХОД В СИСТЕМУ С ПАНЕЛИ УПРАВЛЕНИЯ\!\!\!_*", parse_mode="MarkdownV2")
+    os.system("reboot")
     
 bot.polling(none_stop=True, interval=0)  
