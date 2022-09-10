@@ -43,7 +43,7 @@ def get_temp():
 @bot.message_handler(commands=["start", "help"])
 
 def start(m, res=False):
-    bot.send_message(m.chat.id, "")  
+    bot.send_message(m.chat.id, "*Привет\!* Вот мои команды:\n*/off \| /shutdown* \- *_Выключает сервер_*\n*/reboot \| /restart* \- *_Перезагружает сервер_*\n*/t \| /temp \| /temperature* \- *_отображает температуру процессора сервера_*")  
     
 @bot.message_handler(commands=["temp", "t", "temperature"])
 
